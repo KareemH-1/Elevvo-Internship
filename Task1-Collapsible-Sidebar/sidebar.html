@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="sidebar.css">
+
+</head>
+<body>
+    <div class="toggle-sidebar">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+    <div class="sidebar">
+        <div class="toggle-btn">       
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </div>
+        <div class="logo-details">
+            <img src="elevvopaths_logo.jpeg" alt="Logo" class="logo-image">
+            <span class="logo-name">SideBar</span>
+        </div>
+
+        <div class="sidebar-menu">
+            <div class="sidebar-section">
+                <h2 class="section-title">Dashboard</h2>
+                <ul class="section-list">
+                    <li class="list-item current-page">
+                        <a href="#" class="list-link">
+                            <i class="fa fa-home link-icon" aria-hidden="true"></i>
+                            <span class="link-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">
+                            <i class="fa fa-chart-line link-icon" aria-hidden="true"></i>
+                            <span class="link-text">Analytics</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="section-title">Content</h2>
+                <ul class="section-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">
+                            <i class="fa fa-folder link-icon" aria-hidden="true"></i>
+                            <span class="link-text">Projects</span>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">
+                            <i class="fa fa-users link-icon" aria-hidden="true"></i>
+                            <span class="link-text">Team</span>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">
+                            <i class="fa fa-file-alt link-icon" aria-hidden="true"></i>
+                            <span class="link-text">Documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+     
+            <div class="sidebar-bottom">
+                <div class="sidebar-profile">
+                    <img src="user_profile.png" alt="User Profile" class="profile-image">
+                    <div class="profile-info">
+                        <span class="profile-name">Kareem Ahmed</span>
+                        <span class="profile-role">Admin</span>
+                    </div>
+                </div>
+                <div class="sidebar-settings">
+
+                    <div class="sidebar-theme">
+                        <i class="fa fa-moon theme-icon" aria-hidden="true"></i>
+                        <span class="theme-text">Dark Mode</span>
+                    </div>
+                    <div class="sidebar-logout">
+                        <i class="fa fa-sign-out-alt logout-icon" aria-hidden="true"></i>
+                        <span class="logout-text">Logout</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="sidebar.js"></script>
+</body>
+</html>
