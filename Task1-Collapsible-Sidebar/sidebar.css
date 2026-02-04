@@ -204,6 +204,10 @@ body{
     font-weight: bold;
     color: var(--primary-color);
 }
+.profile-role {
+    font-size: 14px;
+    color: var(--text-muted-color);
+}
 
 .sidebar-settings {
     display: flex;
@@ -234,6 +238,8 @@ body{
     font-size: 16px;
     color: var(--text-color);
 }
+
+
 
 @media (max-width: 768px) {
     .sidebar {
