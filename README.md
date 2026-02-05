@@ -6,12 +6,12 @@
 
 ## Projects Overview
 
-| # | Project Name | Description | Technologies | Demo Link |
+| # | Project Name | Description | Technologies | Link |
 |---|--------------|-------------|--------------|-----------|
-| 1 | Collapsible Sidebar | A responsive sidebar navigation component with smooth collapse/expand animations | HTML, CSS, JavaScript | [View Demo](https://kareemh-1.github.io/Elevvo-Internship/Task1-Collapsible-Sidebar/sidebar.html) |
-| 2 | Contact Form | An interactive contact form with validation | HTML, CSS, JavaScript | [View Demo](https://kareemh-1.github.io/Elevvo-Internship/Task2-Contact_Form/contact-form.html) |
-| 3 | TaskFlow App | A Home page for a task management app with clean UI, animations, pricing and feature cards | React, Vite, JSX | [View Demo](https://taskflowelevvo.netlify.app/) |
-| 4 | Personal Blog | A responsive blog homepage with dynamic content, search, category filtering, and theme switching | React, Vite, State Management | [View Demo](https://personalblog-elevvo.netlify.app/) |
+| 1 | Collapsible Sidebar | A responsive sidebar navigation component with smooth collapse/expand animations | HTML, CSS, JavaScript | [View Demo](./Task1-Collapsible-Sidebar/) |
+| 2 | Contact Form | An interactive contact form with validation | HTML, CSS, JavaScript | [View Demo](./Task2-Contact_Form/) |
+| 3 | TaskFlow App | A Home page for a task management app with clean UI, animations, pricing and feature cards | React, Vite, JSX | [View Demo](./Task3-Task%20App/) |
+| 4 | Personal Blog | A responsive blog homepage with dynamic content, search, category filtering, and theme switching | React, Vite, State Management | [View Demo](./Task4-BlogHomePage/) |
 
 ---
 
@@ -49,7 +49,7 @@ cd Task1-Collapsible-Sidebar
 Install dependencies and run the development server:
 ```bash
 # Navigate to project folder
-cd "Task3-TaskFlow App"  # or "Task4-Personal Blog"
+cd "Task3-Task App"  # or "Task4-Personal Blog"
 
 # Install dependencies
 npm install
