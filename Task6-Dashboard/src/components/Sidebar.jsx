@@ -16,7 +16,7 @@ import {
 import "../css/sidebar.css";
 import userProfile from "../assets/user_profile.png";
 
-const Sidebar = ({ page, userName, onToggle, isOpen }) => {
+const Sidebar = ({ page, userName, onToggle, isOpen, isDarkMode, onToggleTheme }) => {
   const setIsOpen = (newStateOrCallback) => {
     const newState = typeof newStateOrCallback === 'function' 
       ? newStateOrCallback(isOpen) 
@@ -46,11 +46,10 @@ const Sidebar = ({ page, userName, onToggle, isOpen }) => {
     }
   }, [page]);
 
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
-
   function toggleDarkMode() {
-    setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("darkMode", !isDarkMode);
+    if (onToggleTheme) {
+      onToggleTheme(!isDarkMode)
+    }
   }
 
   return (

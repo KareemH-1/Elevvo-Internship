@@ -66,6 +66,7 @@ p{
 
 .content {
   padding: 32px 28px 40px;
+  margin-bottom:  50px;
   width: 100%;
 }
 
@@ -161,8 +162,7 @@ p{
 }
 
 .projects-section {
-  margin-top: 20px;
-  margin: 0px 20px 0px 20px;
+  margin: 20px 20px 50px 20px;
 }
 
 .projects-section h2 {
@@ -298,4 +298,10 @@ p{
 }
 .task-item.pending {
   color: var(--secondary-color);
+}
+
+.charts_title {
+  font-size: 18px;
+  margin: 20px 20px 16px;
+  color: var(--text-color);
 }

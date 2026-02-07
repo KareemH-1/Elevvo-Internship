@@ -1,9 +1,10 @@
 import React from 'react'
 import { Target, BanknoteArrowUp, CheckCircle, Clock, DollarSign, TrendingUp , TrendingDown } from 'lucide-react'
 import Sidebar_Header from '../components/Sidebar_Header'
+import Charts from '../components/Charts'
 import { projects, getTodayEarnings,get7daysEarnings ,get30DaysEarnings, getYearlyEarnings, getAvgMonthlyEarnings, getTotalProjects, getCompletedTasks, getDueTasks , getLast3Projects } from '../data/user.data.js'
 
-const Overview = ({ userName }) => {
+const Overview = ({ userName, isDarkMode, setIsDarkMode }) => {
     const totalProjects = getTotalProjects()
     const totalEarnings = projects.reduce((total, project) => total + project.moneyEarned, 0)
     const completedTasks = getCompletedTasks()
@@ -27,7 +28,7 @@ const Overview = ({ userName }) => {
 
   return (
     <div>
-        <Sidebar_Header page="Overview" userName={userName} />
+        <Sidebar_Header page="Overview" userName={userName} isDarkMode={isDarkMode} onToggleTheme={setIsDarkMode} />
         <div className="content">
             <div className="summary-cards">
                 <div className="card">
@@ -143,7 +144,9 @@ const Overview = ({ userName }) => {
                 ))}
             </div>
         </div>
-
+     
+       <h1 className="charts_title">Projects Statistics</h1>
+    <Charts isDarkMode={isDarkMode} />
     </div>
   )
 }
