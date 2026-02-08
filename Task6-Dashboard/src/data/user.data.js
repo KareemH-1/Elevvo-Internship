@@ -2,6 +2,9 @@ const projects = [
     {
         id: 1,
         name: "Project A",
+        client: "TechStart Solutions",
+        clientEmail: "contact@techstart.com",
+        clientPhone: "+20 --- --- ----",
         type: "Web Design",
         requirements: "Design a responsive website",
         deadline: "2026-02-06",
@@ -18,6 +21,9 @@ const projects = [
     {  
         id: 2,
         name: "E-Commerce Platform",
+        client: "Fashion Hub Inc.",
+        clientEmail: "info@fashionhub.com",
+        clientPhone: "+20 --- --- ----",
         type: "E-Commerce",
         requirements: "Build a full-stack e-commerce website with payment integration",
         deadline: "2026-02-06",
@@ -35,6 +41,9 @@ const projects = [
     {
         id: 3,
         name: "Mobile App Development",
+        client: "FitLife Wellness",
+        clientEmail: "hello@fitlife.com",
+        clientPhone: "+20 --- --- ----",
         type: "Web Design",
         requirements: "Create a cross-platform mobile app for fitness tracking",
         deadline: "2026-02-05",
@@ -52,6 +61,9 @@ const projects = [
     {
         id: 4,
         name: "CRM System",
+        client: "Global Marketing Co.",
+        clientEmail: "support@globalmarketing.com",
+        clientPhone: "+20 --- --- ----",
         type: "Enterprise Software",
         requirements: "Develop a customer relationship management system",
         deadline: "2025-11-12",
@@ -68,6 +80,9 @@ const projects = [
     {
         id: 5,
         name: "Blog Platform",
+        client: "Content Creators Hub",
+        clientEmail: "team@contentcreators.com",
+        clientPhone: "+20 --- --- ----",
         type: "Web Design",
         requirements: "Build a modern blogging platform with CMS",
         deadline: "2026-01-28",
@@ -85,6 +100,9 @@ const projects = [
     {
         id: 6,
         name: "Inventory Management",
+        client: "Warehouse Logistics Ltd.",
+        clientEmail: "operations@warehouselogistics.com",
+        clientPhone: "+20 --- --- ----",
         type: "Operations",
         requirements: "Create an inventory tracking system for warehouse",
         deadline: "2024-09-15",
@@ -102,6 +120,9 @@ const projects = [
     {
         id: 7,
         name: "Social Media Dashboard",
+        client: "Digital Marketing Pro",
+        clientEmail: "admin@digitalmarketingpro.com",
+        clientPhone: "+20 --- --- ----",
         type: "E-Commerce",
         requirements: "Build analytics dashboard for social media metrics",
         deadline: "2026-02-06",
@@ -118,6 +139,9 @@ const projects = [
     {
         id: 8,
         name: "Real Estate Portal",
+        client: "Prime Properties Group",
+        clientEmail: "contact@primeproperties.com",
+        clientPhone: "+20 --- --- ----",
         type: "Marketplace",
         requirements: "Develop a property listing and search platform",
         deadline: "2026-02-10",
@@ -135,6 +159,9 @@ const projects = [
     {
         id: 9,
         name: "Learning Management System",
+        client: "EduTech Academy",
+        clientEmail: "info@edutechacademy.com",
+        clientPhone: "+20 --- --- ----",
         type: "EdTech",
         requirements: "Create an online learning platform with courses and quizzes",
         deadline: "2025-05-20",

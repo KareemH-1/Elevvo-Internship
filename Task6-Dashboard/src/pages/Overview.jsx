@@ -146,7 +146,7 @@ const Overview = ({ userName, isDarkMode, setIsDarkMode }) => {
         </div>
      
        <h1 className="charts_title">Projects Statistics</h1>
-    <Charts isDarkMode={isDarkMode} />
+        <Charts isDarkMode={isDarkMode} />
     </div>
   )
 }

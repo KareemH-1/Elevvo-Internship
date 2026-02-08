@@ -1,10 +1,9 @@
 .charts-container {
-    max-width: 1400px;
+    max-width: calc(100% - 100px);
     margin: 40px auto 80px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 20px;
-    grid-auto-rows: minmax(220px, auto);
 }
 
 .charts-top-section {
