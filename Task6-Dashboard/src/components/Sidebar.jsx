@@ -65,6 +65,13 @@ const Sidebar = ({ page, userName, onToggle, isOpen, isDarkMode, onToggleTheme }
           </button>
         </div>
       )}
+      {isOpen && (
+        <div 
+          className="sidebar-backdrop" 
+          onClick={() => setIsOpen(false)}
+          aria-label="Close sidebar"
+        />
+      )}
       <div className={`sidebar ${isOpen ? "sidebar-open" : "sidebar-collapsed"}`}>
         <div className="sidebar-header">
         <div className="sidebar-logo">

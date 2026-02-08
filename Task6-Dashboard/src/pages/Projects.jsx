@@ -3,27 +3,53 @@ import Sidebar_Header from '../components/Sidebar_Header'
 import {Plus, SquarePen , Search , X} from 'lucide-react'
 import { projects as initialProjects } from '../data/user.data.js'
 import AddProject from '../components/AddProject.jsx'
+import EditProject from '../components/EditProject.jsx'
 const Projects = ({ userName, isDarkMode, setIsDarkMode }) => {
   
   const [projects, setProjects] = React.useState([]);
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+  const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
+  const [projectToEdit, setProjectToEdit] = React.useState(null);
   const isThereProjects = projects.length > 0;
   const [searchTerm, setSearchTerm] = React.useState('');
   const [filteredProjects, setFilteredProjects] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 9;
 
+  const checkAndUpdateOverdueProjects = (projects) => {
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    
+    const updatedProjects = projects.map(project => {
+      if (project.status.toLowerCase() !== 'completed' && project.deadline) {
+        const deadlineDate = new Date(project.deadline);
+        deadlineDate.setHours(0, 0, 0, 0);
+        
+        if (deadlineDate < currentDate) {
+          return { ...project, status: 'Overdue' };
+        }
+      }
+      return project;
+    });
+    
+    return updatedProjects;
+  };
+
   useEffect(() => {
     const storedProjects = localStorage.getItem('projects');
+    let loadedProjects;
+    
     if (storedProjects) {
-      const loadedProjects = JSON.parse(storedProjects);
-      setProjects(loadedProjects);
-      setFilteredProjects(loadedProjects);
+      loadedProjects = JSON.parse(storedProjects);
     } else {
-      localStorage.setItem('projects', JSON.stringify(initialProjects));
-      setProjects(initialProjects);
-      setFilteredProjects(initialProjects);
+      loadedProjects = initialProjects;
     }
+    
+    const updatedProjects = checkAndUpdateOverdueProjects(loadedProjects);
+    
+    localStorage.setItem('projects', JSON.stringify(updatedProjects));
+    setProjects(updatedProjects);
+    setFilteredProjects(updatedProjects);
   }, []);
   
   function openAddProjectPopup(){
@@ -32,6 +58,33 @@ const Projects = ({ userName, isDarkMode, setIsDarkMode }) => {
 
   function closeAddProjectPopup(){
     setIsPopupOpen(false);
+  }
+
+  function openEditProjectPopup(project){
+    setProjectToEdit(project);
+    setIsEditPopupOpen(true);
+  }
+
+  function closeEditProjectPopup(){
+    setIsEditPopupOpen(false);
+    setProjectToEdit(null);
+  }
+  
+  function handleAddProject(newProject) {
+    const updatedProjects = [...projects, newProject];
+    setProjects(updatedProjects);
+    setFilteredProjects(updatedProjects);
+    localStorage.setItem('projects', JSON.stringify(updatedProjects));
+  }
+
+  function handleEditProject(updatedProject) {
+    const updatedProjects = projects.map(project => 
+      project.id === updatedProject.id ? updatedProject : project
+    );
+    const checkedProjects = checkAndUpdateOverdueProjects(updatedProjects);
+    setProjects(checkedProjects);
+    setFilteredProjects(checkedProjects);
+    localStorage.setItem('projects', JSON.stringify(checkedProjects));
   }
 
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
@@ -70,6 +123,10 @@ const Projects = ({ userName, isDarkMode, setIsDarkMode }) => {
   useEffect(() => {
     const typeSelect = document.querySelector('.filter-container select:nth-child(2)');
     if (typeSelect && projects.length > 0) {
+      while (typeSelect.options.length > 1) {
+        typeSelect.remove(1);
+      }
+      
       const types = [...new Set(projects.map(project => project.type))];
       types.forEach(type => {
         const option = document.createElement('option');
@@ -209,7 +266,7 @@ const Projects = ({ userName, isDarkMode, setIsDarkMode }) => {
         <div className="projects-grid">
           {currentProjects.map((project) => (
             <div key={project.id} className={`project-card ${project.status.toLowerCase().replace(' ', '')}`}>
-              <SquarePen className="edit-icon" />
+              <SquarePen className="edit-icon" onClick={() => openEditProjectPopup(project)} style={{cursor: 'pointer'}} />
               <div className="project-header">
                 <h3>{project.name || 'N/A'}</h3>
                 <span className={`status ${project.status.toLowerCase().replace(' ', '')}`}>{project.status || 'N/A'}</span>
@@ -290,9 +347,29 @@ const Projects = ({ userName, isDarkMode, setIsDarkMode }) => {
             <button className="close-btn" onClick={closeAddProjectPopup}>
               <X size={20} />
             </button>
-            <AddProject onClose={closeAddProjectPopup} />
+            <AddProject 
+              onClose={closeAddProjectPopup} 
+              onAddProject={handleAddProject}
+              existingProjects={projects}
+            />
           </div>
           <div className="blur active" onClick={closeAddProjectPopup}></div>
+        </>
+      )}
+
+      {isEditPopupOpen && projectToEdit && (
+        <>
+          <div className="add-project-popup">
+            <button className="close-btn" onClick={closeEditProjectPopup}>
+              <X size={20} />
+            </button>
+            <EditProject 
+              onClose={closeEditProjectPopup} 
+              onEditProject={handleEditProject}
+              projectToEdit={projectToEdit}
+            />
+          </div>
+          <div className="blur active" onClick={closeEditProjectPopup}></div>
         </>
       )}
     </div>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import "../css/add_new_project.css";
 
-const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
+const EditProject = ({ onClose, onEditProject, projectToEdit }) => {
   const [projectData, setProjectData] = useState({
     name: "",
     client: "",
@@ -18,6 +18,24 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
 
   const [tasks, setTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState({ name: "", status: "Pending" });
+
+  useEffect(() => {
+    if (projectToEdit) {
+      setProjectData({
+        name: projectToEdit.name || "",
+        client: projectToEdit.client || "",
+        clientEmail: projectToEdit.clientEmail || "",
+        clientPhone: projectToEdit.clientPhone || "",
+        type: projectToEdit.type || "",
+        requirements: projectToEdit.requirements || "",
+        deadline: projectToEdit.deadline || "",
+        earnings: projectToEdit.earnings || "",
+        status: projectToEdit.status || "Pending",
+        moneyEarned: projectToEdit.moneyEarned || 0,
+      });
+      setTasks(projectToEdit.tasks || []);
+    }
+  }, [projectToEdit]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,8 +53,9 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
       return;
     }
 
+    const maxTaskId = tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) : 0;
     const newTask = {
-      id: tasks.length + 1,
+      id: maxTaskId + 1,
       name: currentTask.name,
       status: currentTask.status,
     };
@@ -49,17 +68,20 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
+  const updateTaskStatus = (taskId, newStatus) => {
+    setTasks(tasks.map((task) => 
+      task.id === taskId ? { ...task, status: newStatus } : task
+    ));
+  };
+
   const handleSubmit = () => {
     if (!projectData.name || !projectData.client || !projectData.type || !projectData.deadline) {
       alert("Please fill in all required fields (Project Name, Client, Type, Deadline)");
       return;
     }
 
-    const maxId = existingProjects.length > 0 ? Math.max(...existingProjects.map(p => p.id)) : 0;
-    const newId = maxId + 1;
-
-    const newProject = {
-      id: newId,
+    const updatedProject = {
+      ...projectToEdit,
       name: projectData.name,
       client: projectData.client,
       clientEmail: projectData.clientEmail || "",
@@ -70,11 +92,10 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
       status: projectData.status,
       earnings: Number(projectData.earnings) || 0,
       moneyEarned: Number(projectData.moneyEarned) || 0,
-      earnedDate: null,
       tasks: tasks,
     };
 
-    onAddProject(newProject);
+    onEditProject(updatedProject);
     onClose();
   };
 
@@ -82,7 +103,7 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
     <div className="add-project-container">
       <div className="add-project-main">
         <div className="add-project-header">
-          <h2>Add New Project</h2>
+          <h2>Edit Project</h2>
         </div>
         <div className="add-project-body">
           <div className="form-group">
@@ -169,6 +190,20 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
                 placeholder="Enter project requirements"
               />
             </div>
+
+            <div className="inp">
+              <label>Status</label>
+              <select
+                name="status"
+                value={projectData.status}
+                onChange={handleInputChange}
+              >
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Overdue">Overdue</option>
+              </select>
+            </div>
           </div>
 
           <div className="form-group">
@@ -219,7 +254,7 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
           </div>
 
           <button className="submit-btn" onClick={handleSubmit}>
-            Submit
+            Update Project
           </button>
         </div>
       </div>
@@ -235,9 +270,15 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
                 <div key={task.id} className="task-item-preview">
                   <div className="task-info">
                     <span className="task-name">{task.name}</span>
-                    <span className={`task-status ${task.status.toLowerCase().replace(" ", "")}`}>
-                      {task.status}
-                    </span>
+                    <select
+                      className={`task-status-select ${task.status.toLowerCase().replace(" ", "")}`}
+                      value={task.status}
+                      onChange={(e) => updateTaskStatus(task.id, e.target.value)}
+                    >
+                      <option value="Pending">Pending</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Completed">Completed</option>
+                    </select>
                   </div>
                   <button
                     type="button"
@@ -261,4 +302,4 @@ const AddProject = ({ onClose, onAddProject, existingProjects = [] }) => {
   );
 };
 
-export default AddProject;
+export default EditProject;

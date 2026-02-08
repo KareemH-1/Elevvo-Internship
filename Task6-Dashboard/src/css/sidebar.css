@@ -295,36 +295,152 @@ a{
     color: inherit;
 }
 
+.sidebar-backdrop {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .sidebar {
     position: fixed;
-    left: 0;
+    left: -280px;
     top: 0;
-    z-index: 1000;
-    height: 100%;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    height: 100vh;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+    transition: left 0.3s ease;
+    width: 280px;
+  }
+
+  .sidebar:not(.sidebar-collapsed) {
+    left: 0;
   }
 
   .sidebar-mobile-open {
     display: block;
     position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 100;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
   }
   
   .sidebar-mobile-open .toggle-button {
     background-color: var(--primary-color);
     color: white;
-    padding: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
   
   .sidebar-mobile-open .toggle-button:hover {
     background-color: var(--primary-color-hover);
   }
 
-  .sidebar-collapsed {
-    width: 0;
-    overflow: hidden;
+  .sidebar.sidebar-collapsed {
+    left: -300px !important;
+    width: 280px;
+  }
+
+  .sidebar-header {
+    padding: 16px 14px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sidebar-section {
+    padding: 0 10px;
+  }
+
+  .section-title {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .sidebar-item {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .item-label {
+    font-size: 13px;
+  }
+
+  .user-name {
+    font-size: 13px;
+  }
+
+  .user-email {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 260px;
+    left: -260px;
+  }
+
+  .sidebar.sidebar-collapsed {
+    left: -260px;
+  }
+
+  .sidebar:not(.sidebar-collapsed) {
+    left: 0;
+  }
+
+  .sidebar-mobile-open {
+    top: 10px;
+    left: 10px;
+  }
+
+  .sidebar-mobile-open .toggle-button {
+    padding: 8px;
+  }
+
+  .sidebar-header {
+    padding: 14px 12px;
+  }
+
+  .logo-text {
+    font-size: 15px;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sidebar-item {
+    padding: 8px;
+  }
+
+  .item-label {
+    font-size: 12px;
   }
 }
