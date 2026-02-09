@@ -12,6 +12,7 @@
 | 2 | Contact Form | An interactive contact form with validation | HTML, CSS, JavaScript | [View Demo](./Task2-Contact_Form/) |
 | 3 | TaskFlow App | A Home page for a task management app with clean UI, animations, pricing and feature cards | React, Vite, JSX | [View Demo](./Task3-Task%20App/) |
 | 4 | Personal Blog | A responsive blog homepage with dynamic content, search, category filtering, and theme switching | React, Vite, State Management | [View Demo](./Task4-BlogHomePage/) |
+| 6 | Dashboard | A responsive dashboard with data visualization, interactive charts, sidebar navigation, and local storage integration | React, Vite, React-Router, Chart.js | [View Demo](./Task6-Dashboard/) |
 
 ---
 
@@ -33,6 +34,10 @@
 [![Blog Home Page](assets/imgs/t4_personalBlog.png)](https://personalblog-elevvo.netlify.app/)
 **[View Live Demo →](https://personalblog-elevvo.netlify.app/)**
 
+### 6. Dashboard
+[![Dashboard](assets/imgs/t6_dashboard.png)](https://freelancer-dashboard-elevvo.netlify.app/)
+**[View Live Demo →](https://freelancer-dashboard-elevvo.netlify.app/)**
+
 ---
 
 ## Getting Started
@@ -45,11 +50,11 @@ cd Task1-Collapsible-Sidebar
 # Open sidebar.html in browser
 ```
 
-### React Projects (Tasks 3 & 4)
+### React Projects (Tasks 3, 4 & 6)
 Install dependencies and run the development server:
 ```bash
 # Navigate to project folder
-cd "Task3-Task App"  # or "Task4-Personal Blog"
+cd "Task3-Task App"  # or "Task4-BlogHomePage" or "Task6-Dashboard"
 
 # Install dependencies
 npm install
