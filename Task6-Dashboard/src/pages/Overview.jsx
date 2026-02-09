@@ -123,15 +123,13 @@ const Overview = ({ userName, isDarkMode, setIsDarkMode }) => {
 
         <div className="projects-section">
             <h2>Latest Projects</h2>
-            <div className="projects-grid">
+            <div className="recent-projects">
                 {latestProjects.map((project, index) => (
                     <div key={index} className="project-card">
-                        <div className="project-header">
-                            <div className="project-info">
-                                <h3>{project.name}</h3>
-                                <p>Earned: {formatCurrency(project.moneyEarned)}</p>
-                            </div>
-                            <span className={`project-status ${project.status.toLowerCase().replace(" ", "-")}`}></span>
+                        <span className={`project-status ${project.status.toLowerCase().replace(" ", "-")}`}></span>
+                        <div className="project-info">
+                            <h3>{project.name}</h3>
+                            <p>Earned: {formatCurrency(project.moneyEarned)}</p>
                         </div>
                         <div className="project-tasks">
                             {project.tasks.map((task, taskIndex) => (

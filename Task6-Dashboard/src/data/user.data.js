@@ -182,9 +182,20 @@ const projects = [
 const user ={
     name: "Kareem Ahmed",
     email: "kareem.a.hassan15@gmail.com",
+    phone: "+20 --- --- ----",
+    address: "123 Giza, Egypt",
+    city: "Giza",
+    about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur tincidunt. Curabitur at felis nec justo efficitur bibendum.",
     password: "password123",
     profilePicture: "../assets/user_profile.png"
 }
+
+const recentActivities = [
+    { id: 1, activity: "Completed Project A", date: "2026-01-15" },
+    { id: 2, activity: "Earned $3000 from Project A", date: "2026-01-15" },
+    { id: 3, activity: "Completed UI/UX design for Mobile App", date: "2026-01-20" },
+]
+
 
 function getTrend(currentAmount, previousAmount) {
     if (currentAmount > previousAmount) {
@@ -378,4 +389,4 @@ function getLast3Projects (){
     const sortedProjects = [...projects].sort((a, b) => new Date(b.earnedDate) - new Date(a.earnedDate));
     return sortedProjects.slice(0, 3);
 }
-export { projects, user, getTodayEarnings,get7daysEarnings ,get30DaysEarnings, getYearlyEarnings, getAvgMonthlyEarnings, getEveryMonthEarnings, getTotalProjects, getCompletedTasks, getDueTasks , getLast3Projects};
+export { projects, recentActivities, user, getTodayEarnings,get7daysEarnings ,get30DaysEarnings, getYearlyEarnings, getAvgMonthlyEarnings, getEveryMonthEarnings, getTotalProjects, getCompletedTasks, getDueTasks , getLast3Projects};

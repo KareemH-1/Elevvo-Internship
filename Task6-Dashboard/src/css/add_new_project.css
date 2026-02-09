@@ -447,13 +447,13 @@
 
   .close-btn {
     top: 12px;
-    right: 12px;
+    right: 52px;
     z-index: 10;
   }
 
   .close-btn:hover {
     top: 10px;
-    right: 10px;
+    right: 50px;
   }
 
   .inner-group {
