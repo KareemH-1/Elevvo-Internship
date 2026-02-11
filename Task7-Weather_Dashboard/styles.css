@@ -661,6 +661,7 @@ body {
   
   .end span {
     right: -5px;
+    display: none;
   }
   
   .search-btn {
@@ -910,6 +911,7 @@ body {
   .hourly-forecast .lower {
     gap: 8px;
     padding-top: 8px;
+    justify-content: center;
   }
   
   .hourly-item {
@@ -962,6 +964,11 @@ body {
   
   .delete {
     opacity: 1;
+  }
+  .weekly-day-item {
+    min-width: 80px !important;
+    padding: 12px 10px;
+    gap: 10px;
   }
 }
 
@@ -1118,7 +1125,7 @@ body {
   
   .weekly-day-item {
     min-width: 58px;
-    padding: 8px 4px;
+    padding: 8px 10px;
     gap: 6px;
   }
   
