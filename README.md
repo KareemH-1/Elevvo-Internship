@@ -20,8 +20,8 @@
 ## Project
 
 ### 7. Weather Dashboard
-[![Weather Dashboard](assets/imgs/t7_weatherDashboard.png)](https://kareemh-1.github.io/Elevvo-Internship/Task7-Weather_Dashboard/)
-**[View Live Demo →](https://kareemh-1.github.io/Elevvo-Internship/Task7-Weather_Dashboard/)**
+[![Weather Dashboard](assets/imgs/t7_weatherDashboard.png)](https://kareemh-1.github.io/Elevvo-Internship/Task7-Weather_Dashboard/index.html)
+**[View Live Demo →](https://kareemh-1.github.io/Elevvo-Internship/Task7-Weather_Dashboard/index.html)**
 
 ### 6. Dashboard
 [![Dashboard](assets/imgs/t6_dashboard.png)](https://freelancer-dashboard-elevvo.netlify.app/)
